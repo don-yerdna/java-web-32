@@ -339,6 +339,22 @@ public class DBServices implements IDBServices {
 
     @Override
     public boolean canLogin(String login, String password, String idRole) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select user.id, user.login, user.password, user_role.id_role " +
+                    "from user inner join user_role inner join role " +
+                    "on user_role.id_role = role.id and user_role.id_user = user.id  " +
+                    "where user.login = '"+login+"'");
+
+            while (rs.next()) {
+                if (rs.getString("password").equals(password) && rs.getInt("id_role")==Integer.parseInt(idRole)) return true;
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }
