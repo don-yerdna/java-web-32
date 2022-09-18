@@ -11,8 +11,12 @@ public class
 Main {
     public static void main(String[] args) {
         DBServices services = new DBServices();
-        services.createDiscipline("java программирование");
+
         List<Discipline> disciplines = services.getAllActiveDisciplines();
+
+   //     services.modifyDiscipline("3","Политология1");
+        Discipline dis = services.getDisciplineById("3");
+       // services.deleteDiscipline("3");
         System.out.println();
 
     }
