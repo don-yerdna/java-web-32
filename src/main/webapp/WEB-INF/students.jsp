@@ -17,7 +17,7 @@
   <div id="menu-student">
       <button id="button-view-student">Просмотреть успеваемость выбранных студентов</button>
       <button id="button-modify-student">Модифицировать выбранного студента...</button>
-      <button id="button-create-student">Создать студента...</button>
+      <button id="button-create-student" onclick="location.href='/student'">Создать студента...</button>
       <button id="button-remove-student">Удалить выбранных студентов</button>
   </div>
   <div id="table-student">

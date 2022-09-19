@@ -73,7 +73,14 @@ body{
   font-size: 12px;
   font-weight: bold;
 }
-
+#back {
+  position: absolute;
+  top: 80px;
+  left: 140px;
+  font-family: "Comic Sans MS";
+  font-size: 12px;
+  font-weight: bold;
+}
 #menu-student > button {
   border: solid 2px black;
   background-color: #cccccc;
@@ -113,6 +120,7 @@ body{
   left: 225px;
   font-family: "Comic Sans MS";
 }
+
 #table-student > h3{
   font-size: 17px;
 }
@@ -158,4 +166,20 @@ tr {
 td {
   border: 1px solid grey;
   font-size: 11px;
+}
+#student-form {
+  width: 760px;
+  position: absolute;
+  top: 150px;
+  left: 225px;
+  font-family: "Comic Sans MS";
+}
+#student-form h3{
+  font-size: 17px;
+}
+#student-form label{
+  text-align: right;
+}
+#student-form input{
+
 }
