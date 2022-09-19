@@ -13,10 +13,10 @@
         <span>Система управления студентами и их успеваемостью</span>
     </div>
     <a id="logout" href="logout.html">Logout</a>
-    <div id="menu">
-        <div style="text-align: left"><a href="/students">Студенты</a></div>
-        <div style="text-align: center"><a href="disciplines.html">Дисциплины</a></div>
-        <div style="text-align: right"><a href="semestres.html">Семестры</a></div>
+    <div id="menu-title">
+        <div id="button-student"><a href="/students">Студенты</a></div>
+        <div id="buton-discipline"><a href="disciplines.html">Дисциплины</a></div>
+        <div id="button-term"><a href="semestres.html">Семестры</a></div>
     </div>
 </div>
 
