@@ -159,8 +159,9 @@ body{
 #table-student-col5{
   width: 100px;
 }
-#table-student > .checkbox{
+#table-student > table > tbody > tr > td.checkbox{
   text-align: center;
+
 }
 #table-student > table {
   width: 100%;
@@ -168,7 +169,7 @@ body{
   border: 1px solid grey;
 }
 /* границы ячеек первого ряда таблицы */
-#table-student > th {
+#table-student > table > tbody > tr > th {
   background-color: #cccccc;
   vertical-align: bottom;
   text-align: left;
@@ -177,13 +178,13 @@ body{
   font-size: 14px;
   font-weight: bold;
 }
-#table-student > tr {
+#table-student > table > tbody > tr {
   height: 85px;
   vertical-align: bottom;
   text-align: left;
 }
 /* границы ячеек тела таблицы */
-#table-student > td {
+#table-student > table > tbody > tr > td {
   border: 1px solid grey;
   font-size: 11px;
 }

@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../resources/css/styles.css">
+
     <title>Students List</title>
 
 </head>
@@ -23,8 +24,9 @@
             </form>
         </div>
         <div>
-            <form action="/" method="get">
+            <form action="/student-modify" method="get" >
                 <input class="menu-student-form-button" id="button-modify-student" type="submit" value="Модифицировать выбранного студента..."/>
+                <input style="display: none" type="text" id="student_check_text" name="id" value="">
             </form>
         </div>
         <div>
@@ -35,6 +37,7 @@
         <div>
             <form action="/" method="get">
                 <input class="menu-student-form-button" id="button-remove-student" type="submit" value="Удалить выбранных студентов"/>
+                <input style="display: none" type="text" id="student_remove_text" name="id" value="">
             </form>
         </div>
     </div>
@@ -50,7 +53,7 @@
             </tr>
             <c:forEach items="${students}" var="student">
                 <tr>
-                    <td class="checkbox"><input type="checkbox"></td>
+                    <td class="checkbox"><input type="checkbox" name="id" value="${student.id}"></td>
                     <td>${student.surname}</td>
                     <td>${student.name}</td>
                     <td>${student.group}</td>
@@ -60,6 +63,19 @@
         </table>
     </div>
 </div>
-
+<script>
+    text_remove=document.getElementById("student_remove_text")
+    text_modify=document.getElementById("student_check_text")
+    inputs=document.getElementsByName("id")
+    for(i in inputs){inputs[i].onclick=function(){
+        if(this.checked){
+            text_remove.value=text_remove.value+this.value+ ", "
+            text_modify.value=this.value
+        }else{
+            text_remove.value=text_remove.value.replace(this.value+", ", "")
+            text_modify.value=text_modify.value.replace(this.value, "")
+        }
+    }}
+</script>
 </body>
 </html>

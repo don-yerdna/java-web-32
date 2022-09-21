@@ -153,7 +153,11 @@ public class DBServices implements IDBServices {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
             Statement stmt = conn.createStatement();
-            stmt.execute("UPDATE `student` SET `surname` = '" + newSurname + "', `name` = '" + newName + "', `group` = '" + newGroup + "', `date` = '" + newDate + "' WHERE (`id` = '" + id + "');");
+            stmt.execute("UPDATE `student` SET `surname` = '" + newSurname +
+                    "', `name` = '" + newName +
+                    "', `group` = '" + newGroup +
+                    "', `date` = '" + newDate +
+                    "' WHERE (`id` = '" + id + "')");
         } catch (Exception e) {
             e.printStackTrace();
         }
