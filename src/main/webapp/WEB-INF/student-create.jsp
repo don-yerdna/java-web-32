@@ -8,6 +8,27 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
+        /* Локализация datepicker */
+        $.datepicker.regional['ru'] = {
+            closeText: 'Закрыть',
+            prevText: 'Предыдущий',
+            nextText: 'Следующий',
+            currentText: 'Сегодня',
+            monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+            monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
+            dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+            dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+            dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+            weekHeader: 'Не',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['ru']);
+    </script>
+    <script>
         $( function() {
             $( "#datepicker" ).datepicker();
         } );
@@ -26,11 +47,12 @@
     <div id="student-form">
         <h3>Для создания студента заполните все поля и нажмите кнопку "Создать"</h3>
         <form action="student-create" method="post">
-            <label>Фамилия</label><input name="surname" type="text">
-            <label>Имя</label><input name="name" type="text">
-            <label>Группа</label><input name="group" type="text">
-            <label>Дата поступления</label><input id="datepicker" name="date" type="text">
-            <input type="submit" value="Создать"/>
+            <div class="label"><label>Фамилия</label></div><div><input class="create-student-input" name="surname" type="text"></div><br>
+            <div class="label"><label>Имя</label></div><div><input class="create-student-input" name="name" type="text"></div><br>
+            <div class="label"><label>Группа</label></div><div><input class="create-student-input" name="group" type="text"></div><br>
+            <div class="label"><label>Дата поступления</label></div><div><input id="datepicker" name="date" type="text"></div><br>
+
+            <input class="create-student-form-button" type="submit" value="Создать"/>
         </form>
     </div>
 

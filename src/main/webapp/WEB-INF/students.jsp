@@ -16,13 +16,27 @@
     </div>
     <a id="logout" href="logout.html">Logout</a>
     <a id="home" href="/">На главную</a>
-    <input id="menu-student">
-        <button id="button-view-student">Просмотреть успеваемость выбранных студентов</button>
-        <button id="button-modify-student">Модифицировать выбранного студента...</button>
-        <form action="/student-create" method="get">
-            <input type="submit" id="button-create-student" value="Создать студента..."/>
-        </form>
-        <button id="button-remove-student">Удалить выбранных студентов</button>
+    <div id="menu-student">
+        <div >
+            <form action="/" method="get">
+                <input class="menu-student-form-button" id="button-view-student" type="submit" value="Просмотреть успеваемость выбранных студентов"/>
+            </form>
+        </div>
+        <div>
+            <form action="/" method="get">
+                <input class="menu-student-form-button" id="button-modify-student" type="submit" value="Модифицировать выбранного студента..."/>
+            </form>
+        </div>
+        <div>
+            <form action="/student-create" method="get">
+                <input class="menu-student-form-button" id="button-create-student" type="submit" value="Создать студента..."/>
+            </form>
+        </div>
+        <div>
+            <form action="/" method="get">
+                <input class="menu-student-form-button" id="button-remove-student" type="submit" value="Удалить выбранных студентов"/>
+            </form>
+        </div>
     </div>
     <div id="table-student">
         <h3>Список студентов</h3>

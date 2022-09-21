@@ -81,33 +81,53 @@ body{
   font-size: 12px;
   font-weight: bold;
 }
-#menu-student > button {
+.menu-student-form-button{
   border: solid 2px black;
   background-color: #cccccc;
   font-family: "Comic Sans MS";
   height: 23px;
   font-weight: bold;
-  position: absolute;
+}
+.create-student-form-button{
+   border: solid 1pt black;
+   background-color: #cccccc;
+   font-family: "Comic Sans MS";
+   height: 23px;
+  width:100px;
+  margin-left: 130px;
+   font-weight: bold;
+ }
+#datepicker, .create-student-input{
+  border: solid 1pt black;
+  width: 200px;
 }
 #button-view-student{
+
+  position: absolute;
   top: 80px;
   left: 225px;
   width: 270px;
   font-size: 10px;
 }
 #button-create-student{
+
+  position: absolute;
   top: 80px;
   left: 525px;
   width: 200px;
   font-size: 11px;
 }
 #button-modify-student{
+
+  position: absolute;
   top: 115px;
   left: 225px;
   width: 270px;
   font-size: 11px;
 }
 #button-remove-student{
+
+  position: absolute;
   top: 115px;
   left: 525px;
   width: 200px;
@@ -139,16 +159,16 @@ body{
 #table-student-col5{
   width: 100px;
 }
-.checkbox{
+#table-student > .checkbox{
   text-align: center;
 }
-table {
+#table-student > table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid grey;
 }
 /* границы ячеек первого ряда таблицы */
-th {
+#table-student > th {
   background-color: #cccccc;
   vertical-align: bottom;
   text-align: left;
@@ -157,20 +177,20 @@ th {
   font-size: 14px;
   font-weight: bold;
 }
-tr {
+#table-student > tr {
   height: 85px;
   vertical-align: bottom;
   text-align: left;
 }
 /* границы ячеек тела таблицы */
-td {
+#table-student > td {
   border: 1px solid grey;
   font-size: 11px;
 }
 #student-form {
   width: 760px;
   position: absolute;
-  top: 150px;
+  top: 60px;
   left: 225px;
   font-family: "Comic Sans MS";
 }
@@ -179,6 +199,14 @@ td {
 }
 #student-form label{
   text-align: right;
+  font-size: 11px;
+  font-weight: bold;
+}
+.label{
+  float: left;
+  width: 120px;
+  text-align: right;
+  padding-right: 10px;
 }
 #student-form input{
 
