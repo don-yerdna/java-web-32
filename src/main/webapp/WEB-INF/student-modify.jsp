@@ -35,7 +35,7 @@
             $("#datepicker").datepicker();
         });
     </script>
-    <title>Student Creating</title>
+    <title>Student Mofdify</title>
 
 </head>
 <body>
@@ -59,8 +59,9 @@
             <div><input class="create-student-input" name="group" type="text" value="${student.group}"></div>
             <br>
             <div class="label"><label>Дата поступления</label></div>
-            <div><input id="datepicker" name="date" type="text" value="${student.date}"></div>
+            <div><input id="datepicker" name="date" type="text" value=<f:formatDate value="${student.date}" pattern="dd/MM/yyyy"/>></div>
             <div style="display: none"><input name="id" type="text" value="${student.id}"></div>
+            <div style="display: none"></div>
             <br>
 
             <input class="create-student-form-button" type="submit" value="Применить"/>
