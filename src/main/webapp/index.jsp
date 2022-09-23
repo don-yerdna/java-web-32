@@ -15,8 +15,8 @@
     <a id="logout" href="logout.html">Logout</a>
     <div id="menu-title">
         <div id="button-student"><a href="/students">Студенты</a></div>
-        <div id="buton-discipline"><a href="disciplines.html">Дисциплины</a></div>
-        <div id="button-term"><a href="semestres.html">Семестры</a></div>
+        <div id="buton-discipline"><a href="/disciplines">Дисциплины</a></div>
+        <div id="button-term"><a href="/terms">Семестры</a></div>
     </div>
 </div>
 

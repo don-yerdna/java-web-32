@@ -49,16 +49,16 @@
     <div id="student-form">
         <h3>Для модификации, введите новые значения и нажмите кнопку "Применить"</h3>
         <form action="student-modify" method="post">
-            <div class="label"><label>Фамилия</label></div>
+            <div class="student-label"><label>Фамилия</label></div>
             <div><input class="create-student-input" name="surname" type="text" value="${student.surname}"></div>
             <br>
-            <div class="label"><label>Имя</label></div>
+            <div class="student-label"><label>Имя</label></div>
             <div><input class="create-student-input" name="name" type="text" value="${student.name}"></div>
             <br>
-            <div class="label"><label>Группа</label></div>
+            <div class="student-label"><label>Группа</label></div>
             <div><input class="create-student-input" name="group" type="text" value="${student.group}"></div>
             <br>
-            <div class="label"><label>Дата поступления</label></div>
+            <div class="student-label"><label>Дата поступления</label></div>
             <div><input id="datepicker" name="date" type="text" value=<f:formatDate value="${student.date}" pattern="dd/MM/yyyy"/>></div>
             <div style="display: none"><input name="id" type="text" value="${student.id}"></div>
             <div style="display: none"></div>

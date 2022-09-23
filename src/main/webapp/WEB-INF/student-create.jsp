@@ -47,10 +47,10 @@
     <div id="student-form">
         <h3>Для создания студента заполните все поля и нажмите кнопку "Создать"</h3>
         <form action="student-create" method="post">
-            <div class="label"><label>Фамилия</label></div><div><input class="create-student-input" name="surname" type="text"></div><br>
-            <div class="label"><label>Имя</label></div><div><input class="create-student-input" name="name" type="text"></div><br>
-            <div class="label"><label>Группа</label></div><div><input class="create-student-input" name="group" type="text"></div><br>
-            <div class="label"><label>Дата поступления</label></div><div><input id="datepicker" name="date" type="text"></div><br>
+            <div class="student-label"><label>Фамилия</label></div><div><input class="create-student-input" name="surname" type="text"></div><br>
+            <div class="student-label"><label>Имя</label></div><div><input class="create-student-input" name="name" type="text"></div><br>
+            <div class="student-label"><label>Группа</label></div><div><input class="create-student-input" name="group" type="text"></div><br>
+            <div class="student-label"><label>Дата поступления</label></div><div><input id="datepicker" name="date" type="text"></div><br>
 
             <input class="create-student-form-button" type="submit" value="Создать"/>
         </form>

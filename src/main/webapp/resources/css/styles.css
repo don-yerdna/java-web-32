@@ -97,7 +97,7 @@ body{
   margin-left: 130px;
    font-weight: bold;
  }
-#datepicker, .create-student-input{
+#datepicker, .create-student-input, .create-discipline-input{
   border: solid 1pt black;
   width: 200px;
 }
@@ -203,12 +203,100 @@ body{
   font-size: 11px;
   font-weight: bold;
 }
-.label{
+.student-label{
   float: left;
   width: 120px;
   text-align: right;
   padding-right: 10px;
 }
-#student-form input{
+#menu-disciplines {
+  position: absolute;
+  left: 650px;
+  top: 120px;
+}
 
+.menu-discipline-form-button{
+  border: solid 1pt black;
+  background-color: #cccccc;
+  font-family: "Comic Sans MS";
+  height: 23px;
+  width: 280px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#table-disciplines {
+  width: 355px;
+  position: absolute;
+  top: 60px;
+  left: 245px;
+  font-family: "Comic Sans MS";
+}
+
+#table-disciplines > h3{
+  font-size: 17px;
+}
+#table-disciplines-col1{
+  width: 77px;
+}
+
+
+#table-disciplines > table > tbody > tr > td.checkbox{
+  text-align: center;
+  vertical-align: center;
+
+}
+#table-disciplines > table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid grey;
+}
+/* границы ячеек первого ряда таблицы */
+#table-disciplines > table > tbody > tr > th {
+  background-color: #cccccc;
+  vertical-align: center;
+  text-align: left;
+  height: 85px;
+  border: 1px solid grey;
+  font-size: 12px;
+  font-weight: bold;
+}
+#table-disciplines > table > tbody > tr {
+  height: 85px;
+  text-align: left;
+}
+/* границы ячеек тела таблицы */
+#table-disciplines > table > tbody > tr > td {
+  border: 1px solid grey;
+  font-size: 12px;
+}
+
+#discipline-form {
+  width: 830px;
+  position: absolute;
+  top: 60px;
+  left: 225px;
+  font-family: "Comic Sans MS";
+}
+#discipline-form h3{
+  font-size: 16px;
+}
+#discipline-form label{
+  text-align: right;
+  font-size: 11px;
+  font-weight: bold;
+}
+.discipline-label{
+  float: left;
+  text-align: right;
+  padding-right: 10px;
+}
+.create-discipline-form-button{
+  border: solid 1pt black;
+  background-color: #cccccc;
+  font-family: "Comic Sans MS";
+  height: 23px;
+  width:100px;
+  margin-left: 60px;
+  font-weight: bold;
 }
