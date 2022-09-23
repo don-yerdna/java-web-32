@@ -35,7 +35,7 @@
             </form>
         </div>
         <div>
-            <form action="/" method="get">
+            <form action="/student-remove" method="get">
                 <input class="menu-student-form-button" id="button-remove-student" type="submit" value="Удалить выбранных студентов"/>
                 <input style="display: none" type="text" id="student_remove_text" name="id" value="">
             </form>
@@ -69,10 +69,19 @@
     inputs=document.getElementsByName("id")
     for(i in inputs){inputs[i].onclick=function(){
         if(this.checked){
-            text_remove.value=text_remove.value+this.value+ ", "
+            if (text_remove.value===""){
+                text_remove.value=text_remove.value+this.value
+            } else {
+                text_remove.value=text_remove.value+","+this.value
+            }
             text_modify.value=this.value
         }else{
-            text_remove.value=text_remove.value.replace(this.value+", ", "")
+            if (text_remove.value===this.value){
+                text_remove.value=text_remove.value.replace(this.value, "")
+            } else {
+                text_remove.value=text_remove.value.replace(","+this.value, "")
+            }
+
             text_modify.value=text_modify.value.replace(this.value, "")
         }
     }}

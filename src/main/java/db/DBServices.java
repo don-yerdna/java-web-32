@@ -169,7 +169,11 @@ public class DBServices implements IDBServices {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
             Statement stmt = conn.createStatement();
-            stmt.execute("UPDATE `student` SET `status` = '0' WHERE (`id` = '" + id + "')");
+            String[] ids = id.split(",");
+            for ( String idD:ids) {
+                stmt.execute("UPDATE `student` SET `status` = '0' WHERE (`id` = '" + idD + "')");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

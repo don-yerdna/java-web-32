@@ -48,7 +48,7 @@
     <a id="back" href="javascript:history.back()">Назад</a>
     <div id="student-form">
         <h3>Для модификации, введите новые значения и нажмите кнопку "Применить"</h3>
-        <form action="student-create" method="post">
+        <form action="student-modify" method="post">
             <div class="label"><label>Фамилия</label></div>
             <div><input class="create-student-input" name="surname" type="text" value="${student.surname}"></div>
             <br>
