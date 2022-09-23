@@ -29,6 +29,7 @@ public class StudentModifyController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
         String id = req.getParameter("id");
         String surname = req.getParameter("surname");

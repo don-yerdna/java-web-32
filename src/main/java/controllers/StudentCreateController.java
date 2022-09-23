@@ -17,6 +17,7 @@ import java.util.Locale;
 
 @WebServlet(name = "StudentCreateController", urlPatterns = "/student-create")
 public class StudentCreateController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("WEB-INF/student-create.jsp").forward(req, resp);
@@ -24,6 +25,7 @@ public class StudentCreateController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
         String surname = req.getParameter("surname");
         String name = req.getParameter("name");
