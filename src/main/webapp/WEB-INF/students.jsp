@@ -19,8 +19,9 @@
     <a id="home" href="/">На главную</a>
     <div id="menu-student">
         <div >
-            <form action="/" method="get">
+            <form action="/student-progress" method="get">
                 <input class="menu-student-form-button" id="button-view-student" type="submit" value="Просмотреть успеваемость выбранных студентов"/>
+                <input style="display: none" type="text" id="student_progress_text" name="idStudent" value="">
             </form>
         </div>
         <div>
@@ -66,6 +67,7 @@
 <script>
     text_remove=document.getElementById("student_remove_text")
     text_modify=document.getElementById("student_check_text")
+    text_progress=document.getElementById("student_progress_text")
     inputs=document.getElementsByName("id")
     for(i in inputs){inputs[i].onclick=function(){
         if(this.checked){
@@ -75,6 +77,7 @@
                 text_remove.value=text_remove.value+","+this.value
             }
             text_modify.value=this.value
+            text_progress.value=this.value
         }else{
             if (text_remove.value===this.value){
                 text_remove.value=text_remove.value.replace(this.value, "")
@@ -83,6 +86,7 @@
             }
 
             text_modify.value=text_modify.value.replace(this.value, "")
+            text_progress.value=text_progress.value.replace(this.value, "")
         }
     }}
 </script>

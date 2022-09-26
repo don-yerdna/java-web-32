@@ -430,3 +430,127 @@ body{
   border: solid 1pt black;
   height: 150px;
 }
+
+#select-terms-student {
+width: 410px;
+  position: absolute;
+  top: 210px;
+  left: 580px;
+  font-family: "Comic Sans MS";
+  z-index: 999;
+}
+
+#select-terms-student > form > span{
+  font-size: 17px;
+  font-weight: bold;
+}
+#select-terms-student > form > select {
+  font-family: "Comic Sans MS";
+  margin-left: 10px;
+  margin-right: 5px;
+  width: 140px;
+  border: solid 2px black;
+
+
+}
+#table-student-mark {
+  width: 760px;
+  position: absolute;
+  top: 60px;
+  left: 225px;
+  font-family: "Comic Sans MS";
+}
+
+#table-student-mark > h3{
+  font-size: 17px;
+}
+
+#table-student-mark-col2{
+  width: 50px;
+}
+#table-student-mark-col3{
+  width: 225px;
+}
+#table-student-mark-col4{
+  width: 225px;
+}
+#table-student-mark-col5{
+  width: 150px;
+}
+
+#table-student-mark > table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid grey;
+}
+
+#table-student-mark > table > tbody > tr > th {
+  background-color: #cccccc;
+  vertical-align: center;
+  text-align: left;
+  height: 25px;
+  border: 1px solid grey;
+  font-size: 12px;
+  font-weight: bold;
+}
+#table-student-mark > table > tbody > tr {
+  height: 25px;
+  vertical-align: center;
+  text-align: left;
+}
+
+#table-student-mark > table > tbody > tr > td {
+  border: 1px solid grey;
+  font-size: 11px;
+}
+#table-mark {
+  width: 760px;
+  position: absolute;
+  top: 210px;
+  left: 225px;
+  font-family: "Comic Sans MS";
+}
+
+#table-mark-col2{
+  width: 150px;
+}
+#table-mark-col3{
+  width: 25px;
+}
+
+
+#table-mark > table {
+  width: 330px;
+  border-collapse: collapse;
+  border: 1px solid grey;
+}
+
+#table-mark > table > tbody > tr > th {
+  background-color: #cccccc;
+  vertical-align: center;
+  text-align: left;
+  height: 85px;
+  border: 1px solid grey;
+  font-size: 12px;
+  font-weight: bold;
+}
+#table-mark > table > tbody > tr {
+  height: 85px;
+  vertical-align: center;
+  text-align: left;
+}
+
+#table-mark > table > tbody > tr > td {
+  border: 1px solid grey;
+  font-size: 11px;
+}
+#average {
+  font-family: "Comic Sans MS";
+  font-size: 17px;
+  font-weight: bold;
+  width: 410px;
+  position: absolute;
+  top: 260px;
+  left: 580px;
+}
+
