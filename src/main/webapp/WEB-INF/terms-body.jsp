@@ -10,12 +10,14 @@
     <div>
         <form action="/term-modify" method="get" >
             <input class="menu-term-form-button" id="button-modify-term" type="submit" value="Модифицировать текущий семестр..."/>
+            <div style="display: none"><input name="id" type="text" value="${term.id}"></div>
         </form>
     </div><br>
 
     <div>
         <form action="/term-remove" method="get">
             <input class="menu-term-form-button" id="button-remove-term" type="submit" value="Удалить текущий семестр"/>
+            <div style="display: none"><input name="id" type="text" value="${term.id}"></div>
         </form>
     </div>
 </div>

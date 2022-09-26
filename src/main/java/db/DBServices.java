@@ -170,7 +170,7 @@ public class DBServices implements IDBServices {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
             Statement stmt = conn.createStatement();
             String[] ids = id.split(",");
-            for ( String idD:ids) {
+            for (String idD : ids) {
                 stmt.execute("UPDATE `student` SET `status` = '0' WHERE (`id` = '" + idD + "')");
             }
 
@@ -208,7 +208,7 @@ public class DBServices implements IDBServices {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select discipline.id, discipline.discipline " +
+            ResultSet rs = stmt.executeQuery("select discipline.id as id, discipline.discipline as discipline " +
                     "from discipline inner join term inner join term_discipline " +
                     "on discipline.id = term_discipline.id_discipline " +
                     "and term.id = term_discipline.id_term where term.id = " + idTerm);
@@ -230,16 +230,28 @@ public class DBServices implements IDBServices {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select id form term");
-            int newId = 0;
+            ResultSet rs = stmt.executeQuery("select term from term");
+            int numberTerm = 0;
             while (rs.next()) {
-                if (rs.getInt("id") > newId) newId = rs.getInt("id") + 1;
+                if (Integer.parseInt(rs.getString("term").split(" ")[1]) > numberTerm) {
+                    numberTerm = Integer.parseInt(rs.getString("term").split(" ")[1]);
+                }
             }
-            stmt.execute("INSERT INTO `term` (`term`,`duration`) VALUES ('Семестр" + newId + "','" + duration + "');");
+            numberTerm = numberTerm + 1;
+            String idString = String.valueOf(numberTerm);
+            String newTermName = "Семестр " + idString;
+            stmt.execute("INSERT INTO `term` (`term`,`duration`) VALUES ('" + newTermName + "','" + duration + "');");
+
+            rs = stmt.executeQuery("select `id` from `term` where `term`='"+newTermName+"'");
+            int newId=0;
+            while (rs.next()){
+                newId = rs.getInt("id");
+            }
 
             String[] idDisc = idsDisciplines.split(",");
             for (String id : idDisc) {
-                stmt.execute("INSERT INTO `term_discipline` (`id_term`,`id_discipline`) VALUES ('" + newId + "','" + id + "');");
+                int idd = Integer.parseInt(id);
+                stmt.execute("INSERT INTO `term_discipline` (`id_term`,`id_discipline`) VALUES ('" + newId + "','" + idd + "');");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -292,6 +304,7 @@ public class DBServices implements IDBServices {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
             Statement stmt = conn.createStatement();
             stmt.execute("UPDATE `term` SET `status` = '0' WHERE (`id` = '" + id + "')");
+            stmt.execute("DELETE FROM `term_discipline` WHERE (`id_term` = '" + id + "');");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -354,10 +367,11 @@ public class DBServices implements IDBServices {
             ResultSet rs = stmt.executeQuery("select user.id, user.login, user.password, user_role.id_role " +
                     "from user inner join user_role inner join role " +
                     "on user_role.id_role = role.id and user_role.id_user = user.id  " +
-                    "where user.login = '"+login+"'");
+                    "where user.login = '" + login + "'");
 
             while (rs.next()) {
-                if (rs.getString("password").equals(password) && rs.getInt("id_role")==Integer.parseInt(idRole)) return true;
+                if (rs.getString("password").equals(password) && rs.getInt("id_role") == Integer.parseInt(idRole))
+                    return true;
 
             }
         } catch (Exception e) {

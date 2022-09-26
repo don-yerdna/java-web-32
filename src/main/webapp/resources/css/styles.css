@@ -393,3 +393,40 @@ body{
   border: 1px solid grey;
   font-size: 12px;
 }
+
+#term-form {
+  width: 830px;
+  position: absolute;
+  top: 60px;
+  left: 225px;
+  font-family: "Comic Sans MS";
+}
+#term-form h3{
+  font-size: 16px;
+}
+#term-form label{
+  text-align: right;
+  font-size: 11px;
+  font-weight: bold;
+}
+.term-label{
+  float: left;
+  text-align: left;
+  width: 150px;
+}
+.create-term-form-button{
+  border: solid 1pt black;
+  background-color: #cccccc;
+  font-family: "Comic Sans MS";
+  height: 23px;
+  width:100px;
+  margin-left: 150px;
+  font-weight: bold;
+}
+.create-term-duration-input{
+  border: solid 1pt black;
+}
+#select-active-term{
+  border: solid 1pt black;
+  height: 150px;
+}
