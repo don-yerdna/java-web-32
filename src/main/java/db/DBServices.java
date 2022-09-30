@@ -1,5 +1,6 @@
 package db;
 
+import constants.Constants;
 import entity.*;
 
 import java.sql.Connection;
@@ -15,7 +16,7 @@ public class DBServices implements IDBServices {
         ArrayList<Discipline> disciplines = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT *  FROM discipline where status = '1'");
             while (rs.next()) {
@@ -36,7 +37,7 @@ public class DBServices implements IDBServices {
     public void createDiscipline(String discipline) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             stmt.execute("INSERT INTO `discipline` (`discipline`) VALUES ('" + discipline + "');");
 
@@ -51,7 +52,7 @@ public class DBServices implements IDBServices {
         Discipline discipline = new Discipline();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT *  FROM discipline where id = '" + id + "'");
             while (rs.next()) {
@@ -68,7 +69,7 @@ public class DBServices implements IDBServices {
     public void modifyDiscipline(String id, String newDiscipline) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             stmt.execute("UPDATE `discipline` SET `discipline` = '" + newDiscipline + "' WHERE (`id` = '" + id + "')");
 
@@ -81,7 +82,7 @@ public class DBServices implements IDBServices {
     public void deleteDiscipline(String id) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             stmt.execute("UPDATE `discipline` SET `status` = '0' WHERE (`id` = '" + id + "')");
 
@@ -91,11 +92,24 @@ public class DBServices implements IDBServices {
     }
 
     @Override
+    public boolean notUsedDiscipline(String id){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM term_discipline inner join mark on term_discipline.id = mark.id_term_dsicipline where id_discipline ='" + id + "'");
+            if (rs == null) return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    @Override
     public List<Student> getAllActiveStudent() {
         ArrayList<Student> students = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT *  FROM student where status = '1'");
             while (rs.next()) {
@@ -118,7 +132,7 @@ public class DBServices implements IDBServices {
     public void createStudent(String surname, String name, String group, String date) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             stmt.execute("INSERT INTO `student` (`surname`,`name`,`group`,`date`) VALUES ('" + surname + "','" + name + "','" + group + "','" + date + "')");
         } catch (Exception e) {
@@ -131,7 +145,7 @@ public class DBServices implements IDBServices {
         Student student = new Student();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT *  FROM student where id = '" + id + "'");
             while (rs.next()) {
@@ -151,7 +165,7 @@ public class DBServices implements IDBServices {
     public void modifyStudent(String id, String newSurname, String newName, String newGroup, String newDate) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             stmt.execute("UPDATE `student` SET `surname` = '" + newSurname +
                     "', `name` = '" + newName +
@@ -167,7 +181,7 @@ public class DBServices implements IDBServices {
     public void deleteStudent(String id) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             String[] ids = id.split(",");
             for (String idD : ids) {
@@ -184,7 +198,7 @@ public class DBServices implements IDBServices {
         ArrayList<Term> terms = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT *  FROM term where status = '1'");
             while (rs.next()) {
@@ -206,7 +220,7 @@ public class DBServices implements IDBServices {
         ArrayList<Discipline> disciplines = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select discipline.id as id, discipline.discipline as discipline " +
                     "from discipline inner join term inner join term_discipline " +
@@ -228,7 +242,7 @@ public class DBServices implements IDBServices {
     public void createTerm(String duration, String idsDisciplines) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select term from term");
             int numberTerm = 0;
@@ -263,7 +277,7 @@ public class DBServices implements IDBServices {
         Term term = new Term();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT *  FROM term where id = '" + id + "'");
             while (rs.next()) {
@@ -282,7 +296,7 @@ public class DBServices implements IDBServices {
     public void modifyTerm(String id, String newDuration, String newIdsDisciplines) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             stmt.execute("UPDATE `term` SET `duration` = '" + newDuration + "' WHERE (`id` = '" + id + "');");
 
@@ -301,7 +315,7 @@ public class DBServices implements IDBServices {
     public void deleteTerm(String id) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             stmt.execute("UPDATE `term` SET `status` = '0' WHERE (`id` = '" + id + "')");
             stmt.execute("DELETE FROM `term_discipline` WHERE (`id_term` = '" + id + "');");
@@ -315,7 +329,7 @@ public class DBServices implements IDBServices {
         ArrayList<Mark> marks = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select mark.id as id, mark.mark as mark, discipline.id as id_disc " +
                     "from mark inner join student inner join term_discipline " +
@@ -343,7 +357,7 @@ public class DBServices implements IDBServices {
         ArrayList<Role> roles = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT *  FROM role where status = '1'");
             while (rs.next()) {
@@ -362,7 +376,7 @@ public class DBServices implements IDBServices {
     public boolean canLogin(String login, String password, String idRole) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32", "root", "ghjcnjgfhjkm");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select user.id, user.login, user.password, user_role.id_role " +
                     "from user inner join user_role inner join role " +

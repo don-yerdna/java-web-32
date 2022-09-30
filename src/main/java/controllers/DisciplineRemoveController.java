@@ -16,7 +16,7 @@ public class DisciplineRemoveController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
         DBServices dbServices = new DBServices();
-        dbServices.deleteDiscipline(id);
+        if (dbServices.notUsedDiscipline(id)) dbServices.deleteDiscipline(id);
 
         resp.sendRedirect("/disciplines");
     }

@@ -15,6 +15,8 @@ public interface IDBServices {
 
     void deleteDiscipline(String id);
 
+    boolean notUsedDiscipline(String id);
+
     List<Student> getAllActiveStudent();
 
     void createStudent(String surname, String name, String group, String date);
