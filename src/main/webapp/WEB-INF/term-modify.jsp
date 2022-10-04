@@ -1,16 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="../resources/css/styles.css">
-    <title>Term Modify</title>
-
-</head>
+<%@include file="header.jsp"%>
 <body>
+<script>
+    document.title = "Term Modify"
+</script>
 <div id="page">
     <div id="title">
         <span>Система управления студентами и их успеваемостью</span>
@@ -33,14 +27,14 @@
                 </select>
             </div>
             <br>
-            <input style="display: none" type="text" id="active-terms-ids" name="ids" value="${idDis}">
-            <input style="display: none" type="text" id="terms-id" name="id" value="${term.id}">
+            <input type="hidden" id="active-terms-ids" name="ids" value="${idDis}">
+            <input type="hidden" id="terms-id" name="id" value="${term.id}">
             <input class="create-term-form-button" type="submit" value="Применить"/>
         </form>
     </div>
 
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script>
     text = document.getElementById("active-terms-ids")
     $('#select-active-term').change(function () {

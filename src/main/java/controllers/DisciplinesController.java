@@ -2,7 +2,6 @@ package controllers;
 
 import db.DBServices;
 import entity.Discipline;
-import entity.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet (name = "DisciplinesController", urlPatterns = "/disciplines")
+@WebServlet(name = "DisciplinesController", urlPatterns = "/disciplines")
 public class DisciplinesController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

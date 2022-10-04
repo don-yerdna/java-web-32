@@ -1,16 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../resources/css/styles.css">
 
-    <title>Students List</title>
-
-</head>
+<%@include file="header.jsp"%>
 <body>
+<script>
+    document.title = "Students List"
+</script>
 <div id="page">
     <div id="title">
         <span>Система управления студентами и их успеваемостью</span>
@@ -19,27 +13,16 @@
     <a id="home" href="/">На главную</a>
     <div id="menu-student">
         <div >
-            <form action="/student-progress" method="get">
-                <input class="menu-student-form-button" id="button-view-student" type="submit" value="Просмотреть успеваемость выбранных студентов"/>
-                <input style="display: none" type="text" id="student_progress_text" name="idStudent" value="">
-            </form>
+            <input class="menu-student-form-button" id="button-view-student" onclick="progressStudent()" type="submit" value="Просмотреть успеваемость выбранных студентов"/>
         </div>
         <div>
-            <form action="/student-modify" method="get" >
-                <input class="menu-student-form-button" id="button-modify-student" type="submit" value="Модифицировать выбранного студента..."/>
-                <input style="display: none" type="text" id="student_check_text" name="id" value="">
-            </form>
+            <input class="menu-student-form-button" id="button-modify-student" onclick="modifyStudent()" type="submit" value="Модифицировать выбранного студента..."/>
         </div>
         <div>
-            <form action="/student-create" method="get">
-                <input class="menu-student-form-button" id="button-create-student" type="submit" value="Создать студента..."/>
-            </form>
+            <input class="menu-student-form-button" id="button-create-student" onclick="createStudent()" type="submit" value="Создать студента..."/>
         </div>
         <div>
-            <form action="/student-remove" method="get">
-                <input class="menu-student-form-button" id="button-remove-student" type="submit" value="Удалить выбранных студентов"/>
-                <input style="display: none" type="text" id="student_remove_text" name="id" value="">
-            </form>
+            <input class="menu-student-form-button" id="button-remove-student" onclick="removeStudents()" type="submit" value="Удалить выбранных студентов"/>
         </div>
     </div>
     <div id="table-student">
@@ -64,31 +47,16 @@
         </table>
     </div>
 </div>
-<script>
-    text_remove=document.getElementById("student_remove_text")
-    text_modify=document.getElementById("student_check_text")
-    text_progress=document.getElementById("student_progress_text")
-    inputs=document.getElementsByName("id")
-    for(i in inputs){inputs[i].onclick=function(){
-        if(this.checked){
-            if (text_remove.value===""){
-                text_remove.value=text_remove.value+this.value
-            } else {
-                text_remove.value=text_remove.value+","+this.value
-            }
-            text_modify.value=this.value
-            text_progress.value=this.value
-        }else{
-            if (text_remove.value===this.value){
-                text_remove.value=text_remove.value.replace(this.value, "")
-            } else {
-                text_remove.value=text_remove.value.replace(","+this.value, "")
-            }
-
-            text_modify.value=text_modify.value.replace(this.value, "")
-            text_progress.value=text_progress.value.replace(this.value, "")
-        }
-    }}
-</script>
+<form id="createStudentForm" action="/student-create" method="get">
+</form>
+<form id="deleteStudentForm" action="/student-remove" method="get">
+    <input type="hidden" id="student_remove_text" name="id" value="">
+</form>
+<form id="modifyStudentForm" action="/student-modify" method="get" >
+    <input type="hidden" id="student_check_text" name="id" value="">
+</form>
+<form id="progressStudentForm" action="/student-progress" method="get">
+    <input type="hidden" id="student_progress_text" name="idStudent" value="">
+</form>
 </body>
 </html>

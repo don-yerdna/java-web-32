@@ -1,13 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="resources/css/styles.css">
-    <title>Title Page</title>
-
-</head>
+<%@include file="WEB-INF/header.jsp" %>
 <body>
+<script>
+    document.title = "Title Page"
+</script>
 <div id="page">
     <div id="title">
         <span>Система управления студентами и их успеваемостью</span>

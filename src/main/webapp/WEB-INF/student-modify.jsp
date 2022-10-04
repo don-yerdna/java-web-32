@@ -1,44 +1,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="../resources/css/styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
-        /* Локализация datepicker */
-        $.datepicker.regional['ru'] = {
-            closeText: 'Закрыть',
-            prevText: 'Предыдущий',
-            nextText: 'Следующий',
-            currentText: 'Сегодня',
-            monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-            monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
-            dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
-            dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
-            dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-            weekHeader: 'Не',
-            dateFormat: 'dd/mm/yy',
-            firstDay: 1,
-            isRTL: false,
-            showMonthAfterYear: false,
-            yearSuffix: ''
-        };
-        $.datepicker.setDefaults($.datepicker.regional['ru']);
-    </script>
-    <script>
-        $(function () {
-            $("#datepicker").datepicker();
-        });
-    </script>
-    <title>Student Mofdify</title>
-
-</head>
+<%@include file="header.jsp" %>
 <body>
+<script>
+    document.title = "Student Mofdify"
+</script>
+<script>
+    /* Локализация datepicker */
+    $.datepicker.regional['ru'] = {
+        closeText: 'Закрыть',
+        prevText: 'Предыдущий',
+        nextText: 'Следующий',
+        currentText: 'Сегодня',
+        monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+        monthNamesShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+        dayNames: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
+        dayNamesShort: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
+        dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+        weekHeader: 'Не',
+        dateFormat: 'dd/mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''
+    };
+    $.datepicker.setDefaults($.datepicker.regional['ru']);
+</script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
 <div id="page">
     <div id="title">
         <span>Система управления студентами и их успеваемостью</span>
@@ -59,9 +50,10 @@
             <div><input class="create-student-input" name="group" type="text" value="${student.group}"></div>
             <br>
             <div class="student-label"><label>Дата поступления</label></div>
-            <div><input id="datepicker" name="date" type="text" value=<f:formatDate value="${student.date}" pattern="dd/MM/yyyy"/>></div>
-            <div style="display: none"><input name="id" type="text" value="${student.id}"></div>
-            <div style="display: none"></div>
+            <div><input id="datepicker" name="date" type="text" value=<f:formatDate value="${student.date}"
+                                                                                    pattern="dd/MM/yyyy"/>></div>
+            <input name="id" type="hidden" value="${student.id}">
+
             <br>
 
             <input class="create-student-form-button" type="submit" value="Применить"/>

@@ -92,7 +92,7 @@ public class DBServices implements IDBServices {
     }
 
     @Override
-    public boolean notUsedDiscipline(String id){
+    public boolean notUsedDiscipline(String id) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
@@ -104,6 +104,7 @@ public class DBServices implements IDBServices {
         }
         return false;
     }
+
     @Override
     public List<Student> getAllActiveStudent() {
         ArrayList<Student> students = new ArrayList<>();
@@ -183,11 +184,7 @@ public class DBServices implements IDBServices {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
-            String[] ids = id.split(",");
-            for (String idD : ids) {
-                stmt.execute("UPDATE `student` SET `status` = '0' WHERE (`id` = '" + idD + "')");
-            }
-
+            stmt.execute("UPDATE `student` SET `status` = '0' WHERE (`id` = '" + id + "')");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -256,9 +253,9 @@ public class DBServices implements IDBServices {
             String newTermName = "Семестр " + idString;
             stmt.execute("INSERT INTO `term` (`term`,`duration`) VALUES ('" + newTermName + "','" + duration + "');");
 
-            rs = stmt.executeQuery("select `id` from `term` where `term`='"+newTermName+"'");
-            int newId=0;
-            while (rs.next()){
+            rs = stmt.executeQuery("select `id` from `term` where `term`='" + newTermName + "'");
+            int newId = 0;
+            while (rs.next()) {
                 newId = rs.getInt("id");
             }
 

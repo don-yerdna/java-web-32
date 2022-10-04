@@ -18,7 +18,7 @@ public class TermCreateController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DBServices dbServices = new DBServices();
-        List<Discipline> disciplines=dbServices.getAllActiveDisciplines();
+        List<Discipline> disciplines = dbServices.getAllActiveDisciplines();
         req.setAttribute("disciplines", disciplines);
         req.getRequestDispatcher("WEB-INF/term-create.jsp").forward(req, resp);
     }

@@ -1,16 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../resources/css/styles.css">
-
-    <title>Disciplines' List</title>
-
-</head>
+<%@include file="header.jsp" %>
 <body>
+<script>
+    document.title = "Disciplines' List"
+</script>
 <div id="page">
     <div id="title">
         <span>Система управления студентами и их успеваемостью</span>
@@ -19,22 +12,18 @@
     <a id="home" href="/">На главную</a>
     <div id="menu-disciplines">
         <div>
-            <form action="/discipline-create" method="get">
-                <input class="menu-discipline-form-button" id="button-create-discipline" type="submit" value="Создать дисциплину..."/>
-            </form>
-        </div><br>
+            <input class="menu-discipline-form-button" id="button-create-discipline" onclick="createDiscipline()"
+                   type="submit" value="Создать дисциплину..."/>
+        </div>
+        <br>
         <div>
-            <form action="/discipline-modify" method="get" >
-                <input class="menu-discipline-form-button" id="button-modify-discipline" type="submit" value="Модифицировать выбранную дисциплину..."/>
-                <input style="display: none" type="text" id="discipline_check_text" name="id" value="">
-            </form>
-        </div><br>
-
+            <input class="menu-discipline-form-button" id="button-modify-discipline" onclick="modifyDiscipline()"
+                   type="submit" value="Модифицировать выбранную дисциплину..."/>
+        </div>
+        <br>
         <div>
-            <form action="/discipline-remove" method="get">
-                <input class="menu-discipline-form-button" id="button-remove-discipline" type="submit" value="Удалить выбранную дисциплину"/>
-                <input style="display: none" type="text" id="discipline_remove_text" name="id" value="">
-            </form>
+            <input class="menu-discipline-form-button" id="button-remove-discipline" onclick="removeDiscipline()"
+                   type="submit" value="Удалить выбранную дисциплину"/>
         </div>
     </div>
     <div id="table-disciplines">
@@ -53,19 +42,13 @@
         </table>
     </div>
 </div>
-<script>
-    text_remove=document.getElementById("discipline_remove_text")
-    text_modify=document.getElementById("discipline_check_text")
-    inputs=document.getElementsByName("id")
-    for(i in inputs){inputs[i].onclick=function(){
-        if(this.checked){
-            text_remove.value=this.value
-            text_modify.value=this.value
-        }else{
-            text_remove.value=text_remove.value.replace(this.value, "")
-            text_modify.value=text_modify.value.replace(this.value, "")
-        }
-    }}
-</script>
+<form id="createDisciplineForm" action="/discipline-create" method="get">
+</form>
+<form id="modifyDisciplineForm" action="/discipline-modify" method="get">
+    <input type="hidden" id="discipline_check_text" name="id" value="">
+</form>
+<form id="removeDisciplineForm" action="/discipline-remove" method="get">
+    <input type="hidden" id="discipline_remove_text" name="id" value="">
+</form>
 </body>
 </html>

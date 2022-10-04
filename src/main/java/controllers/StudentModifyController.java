@@ -16,14 +16,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-@WebServlet (name = "StudentModifyController", urlPatterns = "/student-modify")
+@WebServlet(name = "StudentModifyController", urlPatterns = "/student-modify")
 public class StudentModifyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
         DBServices dbServices = new DBServices();
         Student student = dbServices.getStudentById(id);
-        req.setAttribute("student",student);
+        req.setAttribute("student", student);
         req.getRequestDispatcher("WEB-INF/student-modify.jsp").forward(req, resp);
     }
 
@@ -46,7 +46,6 @@ public class StudentModifyController extends HttpServlet {
         }
         Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateDB = formatter.format(dateDate);
-
         dbServices.modifyStudent(id, surname, name, group, dateDB);
         resp.sendRedirect("/students");
     }

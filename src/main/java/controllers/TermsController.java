@@ -18,7 +18,13 @@ public class TermsController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DBServices dbServices = new DBServices();
         List<Term> terms = dbServices.getAllActiveTerms();
+        int startIdTerm = terms.get(0).getId();
+        Term term = dbServices.getTermById(String.valueOf(startIdTerm));
+        req.setAttribute("term", term);
+        List<Discipline> disciplines = dbServices.getDisciplinesByTerm(String.valueOf(startIdTerm));
+        req.setAttribute("disciplines", disciplines);
         req.setAttribute("terms", terms);
+        req.setAttribute("startIdTerm", startIdTerm);
         req.getRequestDispatcher("WEB-INF/terms.jsp").forward(req, resp);
     }
 
@@ -27,12 +33,12 @@ public class TermsController extends HttpServlet {
         DBServices dbServices = new DBServices();
         List<Term> terms = dbServices.getAllActiveTerms();
         req.setAttribute("terms", terms);
-
         String id = req.getParameter("id");
         Term term = dbServices.getTermById(id);
         req.setAttribute("term", term);
-        List<Discipline> disciplines= dbServices.getDisciplinesByTerm(id);
-        req.setAttribute("disciplines",disciplines);
+        List<Discipline> disciplines = dbServices.getDisciplinesByTerm(id);
+        req.setAttribute("disciplines", disciplines);
+        req.setAttribute("startIdTerm", id);
         req.getRequestDispatcher("WEB-INF/terms.jsp").forward(req, resp);
     }
 }
