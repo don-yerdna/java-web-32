@@ -356,7 +356,7 @@ public class DBServices implements IDBServices {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT *  FROM role where status = '1'");
+            ResultSet rs = stmt.executeQuery("SELECT *  FROM role ");
             while (rs.next()) {
                 Role role = new Role();
                 role.setId(rs.getInt("id"));

@@ -106,7 +106,7 @@ body {
     font-weight: bold;
 }
 
-#datepicker, .create-student-input, .create-discipline-input {
+#datepicker, .create-student-input, .create-discipline-input, .login-input {
     border: solid 1pt black;
     width: 200px;
 }
@@ -617,4 +617,52 @@ body {
     top: 260px;
     left: 580px;
 }
+#error {
+    left: 230px;
+    position: absolute;
+    top: 350px;
+    font-family: "Comic Sans MS" ;
+    font-size: 17px;
+    color: red;
+    font-style: italic;
 
+}
+.error-login {
+    left: 400px;
+    position: absolute;
+    top: 260px;
+    font-family: "Comic Sans MS" ;
+    font-size: 17px;
+    color: red;
+    font-style: italic;
+
+}
+#login-form {
+    width: 380px;
+    position: absolute;
+    top: 90px;
+    left: 400px;
+    font-family: "Comic Sans MS";
+}
+#login-form label {
+    text-align: right;
+    font-weight: bold;
+}
+.login-label {
+    float: left;
+    text-align: left;
+    width: 80px;
+}
+.login-form-button {
+    border: solid 1pt black;
+    background-color: #cccccc;
+    font-family: "Comic Sans MS";
+    height: 23px;
+    width: 100px;
+    margin-left: 130px;
+    font-weight: bold;
+}
+#login-select-role {
+    border: solid 1pt black;
+    width: 150px;
+}

@@ -9,7 +9,7 @@
     <div id="title">
         <span>Система управления студентами и их успеваемостью</span>
     </div>
-    <a id="logout" href="logout.html">Logout</a>
+    <a id="logout" href="/login">Logout</a>
     <a id="home" href="/">На главную</a>
     <a id="back" href="javascript:history.back()">Назад</a>
     <div id="discipline-form">

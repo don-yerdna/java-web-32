@@ -24,12 +24,18 @@ public class StudentCreateController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("utf-8");
-        resp.setContentType("text/html;charset=utf-8");
         String surname = req.getParameter("surname");
         String name = req.getParameter("name");
         String group = req.getParameter("group");
         String date = req.getParameter("date");
+        if (surname == null || surname.equals("") ||
+                name == null || name.equals("") ||
+                group == null || group.equals("") ||
+                date == null || date.equals("")) {
+            req.setAttribute("error",1);
+            req.getRequestDispatcher("WEB-INF/student-create.jsp").forward(req, resp);
+            return;
+        }
         DBServices dbServices = new DBServices();
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         Date dateDate;

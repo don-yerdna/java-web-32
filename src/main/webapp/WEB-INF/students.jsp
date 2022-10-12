@@ -9,12 +9,13 @@
     <div id="title">
         <span>Система управления студентами и их успеваемостью</span>
     </div>
-    <a id="logout" href="logout.html">Logout</a>
+    <a id="logout" href="/logout">Logout</a>
     <a id="home" href="/">На главную</a>
     <div id="menu-student">
         <div >
             <input class="menu-student-form-button" id="button-view-student" onclick="progressStudent()" type="submit" value="Просмотреть успеваемость выбранных студентов"/>
         </div>
+        <c:if test="${role eq 1}">
         <div>
             <input class="menu-student-form-button" id="button-modify-student" onclick="modifyStudent()" type="submit" value="Модифицировать выбранного студента..."/>
         </div>
@@ -24,6 +25,7 @@
         <div>
             <input class="menu-student-form-button" id="button-remove-student" onclick="removeStudents()" type="submit" value="Удалить выбранных студентов"/>
         </div>
+        </c:if>
     </div>
     <div id="table-student">
         <h3>Список студентов</h3>

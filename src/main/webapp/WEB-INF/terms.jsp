@@ -9,7 +9,7 @@
     <div id="title">
         <span>Система управления студентами и их успеваемостью</span>
     </div>
-    <a id="logout" href="logout.html">Logout</a>
+    <a id="logout" href="/logout">Logout</a>
     <a id="home" href="/">На главную</a>
 
     <div id="select-terms">
@@ -24,31 +24,32 @@
 
         </form>
     </div>
-
-    <div id="menu-terms">
-        <div>
-            <form action="/term-create" method="get">
-                <input class="menu-term-form-button" id="button-create-term" type="submit"
-                       value="Создать семестр..."/>
-            </form>
+    <c:if test="${role eq 1}">
+        <div id="menu-terms">
+            <div>
+                <form action="/term-create" method="get">
+                    <input class="menu-term-form-button" id="button-create-term" type="submit"
+                           value="Создать семестр..."/>
+                </form>
+            </div>
+            <br>
+            <div>
+                <form action="/term-modify" method="get">
+                    <input class="menu-term-form-button" id="button-modify-term" type="submit"
+                           value="Модифицировать текущий семестр..."/>
+                    <div><input name="id" type="hidden" value="${term.id}"></div>
+                </form>
+            </div>
+            <br>
+            <div>
+                <form action="/term-remove" method="get">
+                    <input class="menu-term-form-button" id="button-remove-term" type="submit"
+                           value="Удалить текущий семестр"/>
+                    <div><input name="id" type="hidden" value="${term.id}"></div>
+                </form>
+            </div>
         </div>
-        <br>
-        <div>
-            <form action="/term-modify" method="get">
-                <input class="menu-term-form-button" id="button-modify-term" type="submit"
-                       value="Модифицировать текущий семестр..."/>
-                <div style="display: none"><input name="id" type="text" value="${term.id}"></div>
-            </form>
-        </div>
-        <br>
-        <div>
-            <form action="/term-remove" method="get">
-                <input class="menu-term-form-button" id="button-remove-term" type="submit"
-                       value="Удалить текущий семестр"/>
-                <div style="display: none"><input name="id" type="text" value="${term.id}"></div>
-            </form>
-        </div>
-    </div>
+    </c:if>
     <div id="term-detail">
         <span>Длительность семестра: ${term.duration} </span>
         <h3>Список дисциплин семестра</h3>

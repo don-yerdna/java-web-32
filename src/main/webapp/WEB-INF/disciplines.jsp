@@ -8,34 +8,40 @@
     <div id="title">
         <span>Система управления студентами и их успеваемостью</span>
     </div>
-    <a id="logout" href="logout.html">Logout</a>
+    <a id="logout" href="/logout">Logout</a>
     <a id="home" href="/">На главную</a>
-    <div id="menu-disciplines">
-        <div>
-            <input class="menu-discipline-form-button" id="button-create-discipline" onclick="createDiscipline()"
-                   type="submit" value="Создать дисциплину..."/>
+    <c:if test="${role eq 1}">
+        <div id="menu-disciplines">
+            <div>
+                <input class="menu-discipline-form-button" id="button-create-discipline" onclick="createDiscipline()"
+                       type="submit" value="Создать дисциплину..."/>
+            </div>
+            <br>
+            <div>
+                <input class="menu-discipline-form-button" id="button-modify-discipline" onclick="modifyDiscipline()"
+                       type="submit" value="Модифицировать выбранную дисциплину..."/>
+            </div>
+            <br>
+            <div>
+                <input class="menu-discipline-form-button" id="button-remove-discipline" onclick="removeDiscipline()"
+                       type="submit" value="Удалить выбранную дисциплину"/>
+            </div>
         </div>
-        <br>
-        <div>
-            <input class="menu-discipline-form-button" id="button-modify-discipline" onclick="modifyDiscipline()"
-                   type="submit" value="Модифицировать выбранную дисциплину..."/>
-        </div>
-        <br>
-        <div>
-            <input class="menu-discipline-form-button" id="button-remove-discipline" onclick="removeDiscipline()"
-                   type="submit" value="Удалить выбранную дисциплину"/>
-        </div>
-    </div>
+    </c:if>
     <div id="table-disciplines">
         <h3>Список дисциплин</h3>
         <table>
             <tr>
-                <th id="table-discipline-col1"></th>
+                <c:if test="${role eq 1}">
+                    <th id="table-discipline-col1"></th>
+                </c:if>
                 <th id="table-discipline-col2">Наименование дисциплины</th>
             </tr>
             <c:forEach items="${disciplines}" var="discipline">
                 <tr>
-                    <td class="checkbox"><input type="checkbox" name="id" value="${discipline.id}"></td>
+                    <c:if test="${role eq 1}">
+                        <td class="checkbox"><input type="checkbox" name="id" value="${discipline.id}"></td>
+                    </c:if>
                     <td>${discipline.discipline}</td>
                 </tr>
             </c:forEach>
